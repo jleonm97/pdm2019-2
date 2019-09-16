@@ -2,3 +2,12 @@ POR ORDENAR, CAMPO DE PRUEBAS DEL GUI EN HTML
 PARA CORRER EL HTML EN CHROME SIN PROBLEMAS DE SEGURIDAD POR EL OBJETO 3D, CREAR UN ACCESO DIRECTO A CHROME CON EL SIGUIENTE DESTINO:
 "RUTA DE CHROME\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
 
+Fuente:
+Three.js(https://threejs.org)
+para renderizar los archivos.
+https://github.com/mrdoob/three.js/
+
+keithclark(https://keithclark.co.uk/articles/3d-models-in-html-documents/)
+el placeholder x-model 
+y el bundle recompilatorio: 3d-model-bundle.js
+https://github.com/keithclark/3d-model-element
