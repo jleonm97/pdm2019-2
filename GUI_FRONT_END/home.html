@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Embedded Style Sheet</title>
+<link href="style/StyleSheet.css" rel="stylesheet" type="text/css">
+
+ </head>
+ <body>
+<h1><img src="asets/logo_pucp.gif" alt="PUCP" style="float:left"><img src="asets/titulo.jpeg" alt="titulo" style="float:center"><img src="asets/horario.jpeg" alt="horario" style="float:right"></h1>
+ <br>
+ <div>
+ <div class="row">
+  <div class="column">
+  <div class="card">
+  <h2>Cámara principal:</h2>
+  <video width="426" height="240" controls>
+  <source src="media/movie.mp4" type="video/mp4">
+  <source src="media/movie.ogg" type="video/ogg">
+Your browser does not support the video tag.
+</video>
+<h2>Calibración</h2>
+<div class="slidecontainer">
+  <span style="font-weight:bold;color:blue;left">Threshold:  </span>
+  <input type="range" min="1" max="255" value="50" class="slider" id="sld">
+  <span id="vlu" style="font-weight:bold;color:blue;right"></span>
+  <script src="js/slider.js"></script>
+  </div>
+
+<br>
+<br>
+<br>
+   </div>
+   <br>
+  <div class="card">
+   <h2>Parámetros de trabajo:</h2>
+  <table>
+   <tr id="trHeader">
+     <th>Parámetro</th>
+	 <th>Unidad</th>
+     <th>Valor</th>
+    </tr>
+   <tr>
+     <td>Pos X</td>
+	 <td>m</td>
+     <td>762</td>
+	</tr>
+   <tr>
+     <td>Pos Y</td>
+     <td>m</td>
+	 <td>755</td>
+	</tr>
+   <tr>
+     <td>Pos Z</td>
+     <td>m</td>
+	 <td>714</td>
+   </tr>
+   <tr>
+     <td>Ang eje X</td>
+     <td>°</td>
+	 <td>0</td>
+   </tr>
+   <tr>
+     <td>Ang eje Y</td>
+     <td>°</td>
+	 <td>0</td>
+   </tr>
+ </table>
+ </div>
+  </div>
+  <div class="column">
+  <div class="card">
+  
+  <h2>Inclinacion del AUV</h2>
+  <br>
+<br>
+<br>
+<div id="wrap" class="wrap">
+
+ <x-model class="model" src="3d/auv.glb"></x-model>
+ <!-- <x-model class="model" src="http://localhost:3000/3d/duck.glb"></x-model>-->
+ 
+</div>
+<script src="js/3d-model-bundle.js"></script>
+<!--
+  <script src="three/build/three.min.js"></script>
+  <script src="three/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="js/model-element.min.js"></script>
+ -->
+ </div>
+  </div>
+</div>
+ 
+ </div>
+ </body>
+ </html>
