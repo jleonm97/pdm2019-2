@@ -4,7 +4,7 @@ PARA CORRER EL HTML EN CHROME SIN PROBLEMAS DE SEGURIDAD POR EL OBJETO 3D, CREAR
 
 Fuente:
 Three.js(https://threejs.org)
-para renderizar los archivos.
+para renderizar los archivos 3D.
 https://github.com/mrdoob/three.js/
 
 keithclark(https://keithclark.co.uk/articles/3d-models-in-html-documents/)
