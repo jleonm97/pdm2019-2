@@ -1,0 +1,50 @@
+import cv2 as cv2
+import numpy as np
+
+def bwareafilt ( image):
+    image = image.astype(np.uint8)
+    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats(image, connectivity=4)
+    lista = [ ]
+
+    
+    try:
+        if nb_components != None:
+            sizes = stats[:, -1]
+            max_label = 1
+            max_size = sizes[1]
+
+        
+            for i in range(2, nb_components):
+
+                if sizes[i] > max_size:
+                        max_label = i
+                        lista.append(max_label)
+        
+            lista.sort()
+            lista.reverse()
+
+            img2 = np.zeros(output.shape)
+            img3 = np.zeros(output.shape)
+            img4 = np.zeros(output.shape)
+
+
+            img2[output == lista[0]] = 255
+            img3[output == lista[1]] = 255
+            img4[output == lista[2]] = 255
+
+            imagen = img4 + img3 + img2
+
+            print (lista[0],lista[1],lista[2])
+        else:
+            imagen = image
+        
+        
+        return imagen
+
+    except:
+        return image
+    #img2 = np.zeros(output.shape)
+    #img2[output == max_label] = 255
+    
+    
+    
