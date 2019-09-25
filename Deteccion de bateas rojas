@@ -1,0 +1,59 @@
+        #Algoritmo de deteccion de colores
+
+
+        import cv2 as cv2
+        import numpy as np
+        import bwareafilt
+        
+        
+        #Iniciar la camara 0 para la camara local y 1 para camara web externa
+        captura = cv2.VideoCapture(0)
+        
+        while(1):
+            
+            #Capturamos una imagen y la convertimos de RGB -> HSV
+            _, imagen = captura.read()
+            hsv = cv2.cvtColor(imagen, cv2.COLOR_BGR2HSV)
+        
+            #Rango de colores detectados:
+
+            #Rojo Bajo:
+            rojo_bajos = np.array([0,180,30], dtype=np.uint8)
+            rojo_altos = np.array([10,255,255], dtype=np.uint8)
+            mascara_rojo1 = cv2.inRange(hsv, rojo_bajos, rojo_altos)
+
+            #Rojo Alto:
+            rojo_bajos = np.array([170,120,30], dtype=np.uint8)
+            rojo_altos = np.array([180,255,255], dtype=np.uint8)
+            mascara_rojo2 = cv2.inRange(hsv, rojo_bajos, rojo_altos)
+            
+            mascara_rojo = mascara_rojo1 + mascara_rojo2
+
+           
+
+
+        
+            kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(9,9))
+            
+            #mascara_rojo = cv2.morphologyEx(mascara_rojo, cv2.MORPH_ERODE, kernel)
+            mascara_rojo = cv2.morphologyEx(mascara_rojo, cv2.MORPH_OPEN, kernel)
+            
+            
+            #Unir las dos masCARAS
+            mask = mascara_rojo
+            mask2 = bwareafilt(mask)
+            
+            
+            #Mostrar la imagen de la webcam y la mascara verde
+            cv2.imshow('mask', mask2)
+
+            cv2.imshow('Camara', imagen)
+            tecla = cv2.waitKey(5) & 0xFF 
+
+
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+            
+                break
+
+        captura.release()
+        cv2.destroyAllWindows()
