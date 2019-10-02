@@ -21,11 +21,39 @@
 </video>
 <h2>Calibración</h2>
 <div class="slidecontainer">
-  <span style="font-weight:bold;color:blue;left">Threshold:  </span>
-  <input type="range" min="1" max="255" value="50" class="slider" id="sld">
-  <span id="vlu" style="font-weight:bold;color:blue;right"></span>
-  <script src="js/slider.js"></script>
-  </div>
+<div>
+  <span style="font-weight:bold;color:blue;left">Max Hue:  </span>
+  <input type="range" min="1" max="180" value="150" class="slider" id="shmax" name="slider">
+  <span id="vhmax" style="font-weight:bold;color:blue;right"></span>
+</div>
+<div>
+  <span style="font-weight:bold;color:blue;left">Min Hue:  </span>
+  <input type="range" min="1" max="180" value="50" class="slider" id="shmin" name="slider">
+  <span id="vhmin" style="font-weight:bold;color:blue;right"></span>
+</div>
+<div>  
+  <span style="font-weight:bold;color:blue;left">Max Sat:  </span>
+  <input type="range" min="1" max="255" value="200" class="slider" id="ssmax" name="slider">
+  <span id="vsmax" style="font-weight:bold;color:blue;right"></span>
+</div>
+<div>   
+  <span style="font-weight:bold;color:blue;left">Min Sat:  </span>
+  <input type="range" min="1" max="255" value="100" class="slider" id="ssmin" name="slider">
+  <span id="vsmin" style="font-weight:bold;color:blue;right"></span>
+</div>
+<div>   
+  <span style="font-weight:bold;color:blue;left">Max Val:  </span>
+  <input type="range" min="1" max="255" value="200" class="slider" id="svmax" name="slider">
+  <span id="vvmax" style="font-weight:bold;color:blue;right"></span>
+</div>
+<div>   
+  <span style="font-weight:bold;color:blue;left">Min Val:  </span>
+  <input type="range" min="1" max="255" value="100" class="slider" id="svmin" name="slider">
+  <span id="vvmin" style="font-weight:bold;color:blue;right"></span>
+</div>
+  
+  <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+</div>
 
 <br>
 <br>
