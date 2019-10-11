@@ -2,24 +2,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Embedded Style Sheet</title>
-<link href="style/StyleSheet.css" rel="stylesheet" type="text/css">
-
+<title>PDM</title>
+<link href="{{ url_for('static', filename='style/StyleSheet.css') }}" rel="stylesheet" type="text/css">
+<script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
  </head>
  <body>
-<h1><img src="asets/logo_pucp.gif" alt="PUCP" style="float:left"><img src="asets/titulo.jpeg" alt="titulo" style="float:center"><img src="asets/horario.jpeg" alt="horario" style="float:right"></h1>
+<h1><img src="{{ url_for('static', filename='asets/logo_pucp.gif') }}" alt="PUCP" style="float:left"><img src="{{ url_for('static', filename='asets/titulo.jpeg') }}" alt="titulo" style="float:center"><img src="{{ url_for('static', filename='asets/horario.jpeg') }}" alt="horario" style="float:right"></h1>
  <br>
  <div>
  <div class="row">
   <div class="column">
   <div class="card">
-  <h2>Cámara principal:</h2>
-  <video width="426" height="240" controls>
-  <source src="media/movie.mp4" type="video/mp4">
-  <source src="media/movie.ogg" type="video/ogg">
+  <h2>CÃ¡mara principal:</h2>
+  <!--<video width="426" height="240" controls>-->
+  <img src="http://10.101.58.62:9090/?action=stream" />
 <!--Your browser does not support the video tag.-->
 </video>
-<h2>Calibración</h2>
+<script type="text/javascript">
+    var ip = $_SERVER['SERVER_ADDR'];
+    alert(ip);
+</script>
+<h2>CalibraciÃ³n</h2>
+
 <div class="slidecontainer">
 <div>
   <span style="font-weight:bold;color:blue;left">Max Hue:  </span>
@@ -53,18 +57,17 @@
 </div>
   
   <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
-</div>
-
+  </div>
 <br>
 <br>
 <br>
    </div>
    <br>
   <div class="card">
-   <h2>Parámetros de trabajo:</h2>
+   <h2>ParÃ¡metros de trabajo:</h2>
   <table>
    <tr id="trHeader">
-     <th>Parámetro</th>
+     <th>ParÃ¡metro</th>
 	 <th>Unidad</th>
      <th>Valor</th>
     </tr>
@@ -85,15 +88,16 @@
    </tr>
    <tr>
      <td>Ang eje X</td>
-     <td>°</td>
-	 <td>0</td>
+     <td>Â°</td>
+	 <td><span id="rotx"></span></td>
    </tr>
    <tr>
      <td>Ang eje Y</td>
-     <td>°</td>
-	 <td>0</td>
+     <td>Â°</td>
+	 <td><span id="roty"></span></td>
    </tr>
  </table>
+ <script src="{{ url_for('static', filename='js/updatetable.js') }}"></script>
  </div>
   </div>
   <div class="column">
@@ -105,11 +109,13 @@
 <br>
 <div id="wrap" class="wrap">
 
- <x-model class="model" src="3d/auv.glb"></x-model>
+ <x-model class="model" src="{{ url_for('static', filename='3d/auv.glb') }}"></x-model>
  <!-- <x-model class="model" src="http://localhost:3000/3d/duck.glb"></x-model>-->
  
 </div>
-<script src="js/3d-model-bundle.js"></script>
+<script src="{{ url_for('static', filename='js/updatestyles.js') }}"></script>
+<script src="{{ url_for('static', filename='js/3d-model-bundle.js') }}"></script>
+
 <!--
   <script src="three/build/three.min.js"></script>
   <script src="three/examples/js/loaders/GLTFLoader.js"></script>
