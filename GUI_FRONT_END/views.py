@@ -8,91 +8,31 @@ import imutils
 import time
 import cv2 as cv
 
-
+#Definicion del blueprint que se utilizará en Inicial.py
 main = Blueprint('main', __name__)
-
+#Inicialización de variables globales
 angulo = 0
-
 slider = 0
-
 paquete = {'X':0, 'Y':0}
-
 pruebaJ = {"Slider1":0,"Slider2":0,"Slider3":0,"Slider4":0,"Slider5":0,"Slider6":0}
-
-@main.route('/', methods=['GET','POST'])
-
+#Página principal, donde se mostrará la plantilla home.html
+#Esta página solo utilizará el método GET
+@main.route('/', methods=['GET'])
 outputFrame = None
-
-lock = threading.Lock()
-
-vs = VideoStream(src=0).start()
 
 def index():
     
-    global slider
-    
-    if request.method == 'POST':
-    
-      slider = request.form["slider"]
-      return render_template('home.html')
-    
-    else:
-      
-      return render_template('home.html')
-
-def detect_motion():
-    
-    
-    
-@main.route('/am')
-
+    return render_template('home.html')
+#Página de prueba donde se muestra la plantilla video.html que muestra un video
+@main.route('/video')
 def index_post():
    
     return render_template('video.html')
-
-@main.route('/recibir', methods = ['GET', 'POST'])
-
-def recibir():
-  
-  global angulo
-  
-  angulo = request.args.get('angulo')
-   
-  if angulo != None:
-    
-    return '''{}'''.format(angulo) 
-    
-  else:
-  
-    return ' '
-  #return 'El angulo es {}'.format(angulo)
-
-@main.route('/env', methods = ['GET'])  
-
-def enviar():
-  
-  global angulo
-  global paquete
-  
-  return '''<meta http-equiv="refresh" content="1"/>El angulo es {} y el slider {}'''.format(angulo,paquete)
-
-@main.route('/pb1', methods = ['GET'])
-
-def pb1():
-  meen = '?pb=1'
-  
-  return redirect(url_for('main.pb2',name = meen))
-  
-#@main.route('/GA', methods = ['POST','GET'])
-#def ga():
-#  
-#  if request.method == 'POST':
-#    global prueba
-#    prueba = request.json
-#    return 'GA'
-#  else:
-#    return jsonify(prueba)
-  
+#Página de prueba donde se recibe un dato en formato JSON.
+#Cuando un programa envía un request de método POST, esta página recibe el dato y lo guarda en una variable global
+#Cuando un programa envía un request de método GET, esta página envía la variable global guardada, cambiando su tipo a JSON
+#Esta sirve para comunicar programas en python con programas en javascript: python--->javascript
+#Esta se utilizará para enviar los ángulos medidos y así mover la figura 3D
 @main.route('/Prueba', methods = ['POST', 'GET'])
 def pruebaR():
   
@@ -104,19 +44,15 @@ def pruebaR():
     return 'Bien'
     
   else:
+  
     return jsonify(paquete)
-
-@main.route('/pb2/<name>', methods = ['GET'])
-
-def pb2():
-  
-  pbb = request.args.get('pb')
-  
-  return '''{}'''.format(pbb)
-  
-@main.route('/John', methods = ['POST', 'GET'])
-
-def John():
+#Página de prueba donde se recibe un dato de un programa en javascript
+#Cuando un programa envía un request de método POST, esta página recibe el dato y lo guarda en una variable global
+#Cuando un programa envía un request de método GET, esta página envía la variable global guardada, cambiando su tipo a JSON
+#Esta sirve para comunicar programas en javascript con programas en python: javascript--->python
+#Esta se utilizará para enviar los datos de los scrollbars de la interfaz al programa de calibración
+@main.route('/Prueba2', methods = ['POST', 'GET'])
+def Prueba2():
 
   global pruebaJ
   
@@ -128,5 +64,5 @@ def John():
     return 'A'
     
   else:
-    #pruebaJ = request.json
+    
     return jsonify(pruebaJ)  
