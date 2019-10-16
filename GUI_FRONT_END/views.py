@@ -57,7 +57,7 @@ def recibir():
   global angulo
   
   angulo = request.args.get('angulo')
-  
+   
   if angulo != None:
     
     return '''{}'''.format(angulo) 
