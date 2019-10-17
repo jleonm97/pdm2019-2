@@ -102,7 +102,6 @@ body {
 .slidecontainer {
   width: 90%;
 }
-
 .slider {
   -webkit-appearance: none;
   width: 50%;
@@ -113,11 +112,9 @@ body {
   -webkit-transition: .2s;
   transition: opacity .2s;
 }
-
 .slider:hover {
   opacity: 1;
 }
-
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -126,7 +123,6 @@ body {
   background: blue;
   cursor: pointer;
 }
-
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
