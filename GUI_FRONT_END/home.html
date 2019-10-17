@@ -1,142 +1,163 @@
 <!DOCTYPE HTML>
 <html>
+<!--Encabezado del documento html-->
 <head>
 <meta charset="UTF-8">
-<!--Encabezado del documento html-->
+
 <title>PDM</title>
+	
 <!--Libreria principal de estilos, escrita en CSS-->
+	
 <link href="{{ url_for('static', filename='style/StyleSheet.css') }}" rel="stylesheet" type="text/css">
+	
 <!--Libreria JQuery, utilizada para simplificar las funciones utilizadas en los scripts de javascript-->
+	
 <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+	
 <!--Banner del título-->
+	
  </head>
  <body>
-<h1><img src="{{ url_for('static', filename='asets/logo_pucp.gif') }}" alt="PUCP" style="float:left"><img src="{{ url_for('static', filename='asets/titulo.jpeg') }}" alt="titulo" style="float:center"><img src="{{ url_for('static', filename='asets/horario.jpeg') }}" alt="horario" style="float:right"></h1>
+	<h1>
+	 <img src="{{ url_for('static', filename='asets/logo_pucp.gif') }}" alt="PUCP" style="float:left">
+	 <img src="{{ url_for('static', filename='asets/titulo.jpeg') }}" alt="titulo" style="float:center">
+	 <img src="{{ url_for('static', filename='asets/horario.jpeg') }}" alt="horario" style="float:right">
+	</h1>
  <br>
- <div>
-<!--División del espacio de la ventana-->
- <div class="row">
-  <div class="column">
-  <div class="card">
-<!--Camara-->
-  <h2>CÃ¡mara principal:</h2>
- 
-  <img src="http://10.101.58.62:9090/?action=stream" />
+	 <div>
+		<!--División del espacio de la ventana-->
+		 
+		<div class="row">
+		<div class="column">
+		<div class="card">
+			
+		<!--Camara-->
+			
+		<h2>CÃ¡mara principal:</h2>
+		<img src="http://10.101.58.62:9090/?action=stream" />
+		</video>
+		<script type="text/javascript">
+		    var ip = $_SERVER['SERVER_ADDR'];
+		    alert(ip);
+		</script>
+			
+		<!--Sliders de calibración-->
+			
+		<h2>CalibraciÃ³n</h2>
+		<div class="slidecontainer">
+		<div>
+		  <span style="font-weight:bold;color:blue;left">Max Hue:  </span>
+		  <input type="range" min="1" max="180" value="150" class="slider" id="shmax" name="slider">
+		  <span id="vhmax" style="font-weight:bold;color:blue;right"></span>
+		</div>
+		<div>
+		  <span style="font-weight:bold;color:blue;left">Min Hue:  </span>
+		  <input type="range" min="1" max="180" value="50" class="slider" id="shmin" name="slider">
+		  <span id="vhmin" style="font-weight:bold;color:blue;right"></span>
+		</div>
+		<div>  
+		  <span style="font-weight:bold;color:blue;left">Max Sat:  </span>
+		  <input type="range" min="1" max="255" value="200" class="slider" id="ssmax" name="slider">
+		  <span id="vsmax" style="font-weight:bold;color:blue;right"></span>
+		</div>
+		<div>   
+		  <span style="font-weight:bold;color:blue;left">Min Sat:  </span>
+		  <input type="range" min="1" max="255" value="100" class="slider" id="ssmin" name="slider">
+		  <span id="vsmin" style="font-weight:bold;color:blue;right"></span>
+		</div>
+		<div>   
+		  <span style="font-weight:bold;color:blue;left">Max Val:  </span>
+		  <input type="range" min="1" max="255" value="200" class="slider" id="svmax" name="slider">
+		  <span id="vvmax" style="font-weight:bold;color:blue;right"></span>
+		</div>
+		<div>   
+		  <span style="font-weight:bold;color:blue;left">Min Val:  </span>
+		  <input type="range" min="1" max="255" value="100" class="slider" id="svmin" name="slider">
+		  <span id="vvmin" style="font-weight:bold;color:blue;right"></span>
+		</div>
+			
+		<!--Script que define el funcionamieto y métodos de envio de datos del slider-->
+			
+		<script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+		</div>
+		<br>
+		<br>
+		<br>
+		</div>
+		<br>
+		<div class="card">
+			
+		<!--Tabla de parametros medidos por el AUV-->
 
-</video>
-<script type="text/javascript">
-    var ip = $_SERVER['SERVER_ADDR'];
-    alert(ip);
-</script>
-<!--Sliders de calibración-->
-<h2>CalibraciÃ³n</h2>
+		<h2>ParÃ¡metros de trabajo:</h2>
+		  <table>
+		   <tr id="trHeader">
+		     <th>ParÃ¡metro</th>
+			 <th>Unidad</th>
+		     <th>Valor</th>
+		    </tr>
+		   <tr>
+		     <td>Pos X</td>
+			 <td>m</td>
+		     <td>762</td>
+			</tr>
+		   <tr>
+		     <td>Pos Y</td>
+		     <td>m</td>
+			 <td>755</td>
+			</tr>
+		   <tr>
+		     <td>Pos Z</td>
+		     <td>m</td>
+			 <td>714</td>
+		   </tr>
+		   <tr>
+		     <td>Ang eje X</td>
+		     <td>Â°</td>
+			 <td><span id="rotx"></span></td>
+		   </tr>
+		   <tr>
+		     <td>Ang eje Y</td>
+		     <td>Â°</td>
+			 <td><span id="roty"></span></td>
+		   </tr>
+		 </table>
+			
+		<!--Script de la tabla, describe los métodos de recepción de la tabla-->
+			
+		<script src="{{ url_for('static', filename='js/updatetable.js') }}"></script>
+		</div>
+		</div>
+		<div class="column">
+		<div class="card">
+			
+		<!--Modelo 3D-->
+			
+		<h2>Inclinacion del AUV</h2>
+		<br>
+		<br>
+		<br>
+		<div id="wrap" class="wrap">
+		
+		<!--Place Holder del elemento 3D-->
+		
+		<x-model class="model" src="{{ url_for('static', filename='3d/auv.glb') }}"></x-model>
+		</div>
+			
+		<!--Script de movimiento del elemento 3D, define los métodos de recepción 
+		y las inclinaciones del elemento 3D mediante transformaciones de css-->
 
-<div class="slidecontainer">
-<div>
-  <span style="font-weight:bold;color:blue;left">Max Hue:  </span>
-  <input type="range" min="1" max="180" value="150" class="slider" id="shmax" name="slider">
-  <span id="vhmax" style="font-weight:bold;color:blue;right"></span>
-</div>
-<div>
-  <span style="font-weight:bold;color:blue;left">Min Hue:  </span>
-  <input type="range" min="1" max="180" value="50" class="slider" id="shmin" name="slider">
-  <span id="vhmin" style="font-weight:bold;color:blue;right"></span>
-</div>
-<div>  
-  <span style="font-weight:bold;color:blue;left">Max Sat:  </span>
-  <input type="range" min="1" max="255" value="200" class="slider" id="ssmax" name="slider">
-  <span id="vsmax" style="font-weight:bold;color:blue;right"></span>
-</div>
-<div>   
-  <span style="font-weight:bold;color:blue;left">Min Sat:  </span>
-  <input type="range" min="1" max="255" value="100" class="slider" id="ssmin" name="slider">
-  <span id="vsmin" style="font-weight:bold;color:blue;right"></span>
-</div>
-<div>   
-  <span style="font-weight:bold;color:blue;left">Max Val:  </span>
-  <input type="range" min="1" max="255" value="200" class="slider" id="svmax" name="slider">
-  <span id="vvmax" style="font-weight:bold;color:blue;right"></span>
-</div>
-<div>   
-  <span style="font-weight:bold;color:blue;left">Min Val:  </span>
-  <input type="range" min="1" max="255" value="100" class="slider" id="svmin" name="slider">
-  <span id="vvmin" style="font-weight:bold;color:blue;right"></span>
-</div>
-  <!--Script que define el funcionamieto y métodos de envio de datos del slider-->
-  <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
-  </div>
-<br>
-<br>
-<br>
-   </div>
-   <br>
-  <div class="card">
-<!--Tabla de parametros medidos por el AUV-->
-	  
-   <h2>ParÃ¡metros de trabajo:</h2>
-  <table>
-   <tr id="trHeader">
-     <th>ParÃ¡metro</th>
-	 <th>Unidad</th>
-     <th>Valor</th>
-    </tr>
-   <tr>
-     <td>Pos X</td>
-	 <td>m</td>
-     <td>762</td>
-	</tr>
-   <tr>
-     <td>Pos Y</td>
-     <td>m</td>
-	 <td>755</td>
-	</tr>
-   <tr>
-     <td>Pos Z</td>
-     <td>m</td>
-	 <td>714</td>
-   </tr>
-   <tr>
-     <td>Ang eje X</td>
-     <td>Â°</td>
-	 <td><span id="rotx"></span></td>
-   </tr>
-   <tr>
-     <td>Ang eje Y</td>
-     <td>Â°</td>
-	 <td><span id="roty"></span></td>
-   </tr>
- </table>
-<!--Script de la tabla, describe los métodos de recepción de la tabla-->
- <script src="{{ url_for('static', filename='js/updatetable.js') }}"></script>
- </div>
-  </div>
-  <div class="column">
-  <div class="card">
-  <!--Modelo 3D-->
-  <h2>Inclinacion del AUV</h2>
-  <br>
-<br>
-<br>
-<div id="wrap" class="wrap">
-<!--Place Holder del elemento 3D-->
- <x-model class="model" src="{{ url_for('static', filename='3d/auv.glb') }}"></x-model>
- 
- 
-</div>
-<!--Script de movimiento del elemento 3D, define los métodos de recepción 
-y las inclinaciones del elemento 3D mediante transformaciones de css-->
-	  
-<script src="{{ url_for('static', filename='js/updatestyles.js') }}"></script>
-	  
-<!--Script de renderización del elemento 3D, asi como la definicion del
-elemento x-model que sirve de place holder del elemento 3D-->
-	  
-<script src="{{ url_for('static', filename='js/3d-model-bundle.js') }}"></script>
-	  
- </div>
-  </div>
-</div>
- 
- </div>
+		<script src="{{ url_for('static', filename='js/updatestyles.js') }}"></script>
+
+		<!--Script de renderización del elemento 3D, asi como la definicion del
+		elemento x-model que sirve de place holder del elemento 3D-->
+
+		<script src="{{ url_for('static', filename='js/3d-model-bundle.js') }}"></script>
+
+		</div>
+		</div>
+		</div>
+
+	 </div>
  </body>
  </html>
