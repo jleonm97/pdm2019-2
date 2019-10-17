@@ -1,6 +1,8 @@
+/* Imagen de fondo */
 body {
   background-image: url("../asets/background.jpg");
 }
+/* Estilos de texto */
 h1  {
        text-align: center;
        font-size: 16pt;
@@ -16,13 +18,10 @@ h2  {
        font-size: 12pt;
        color: #0007A8;
     }
-  /*  div {
-		background-color: lightblue;
-	}
-*/
 	p {
 		background-color: lightblue;
 	}
+/* Definicion de estilo de tablas*/
     table {
        margin: 5px;
        width: 500px;
@@ -53,7 +52,7 @@ h2  {
 	* {
   box-sizing: border-box;
 }
-
+/* Estilos de texto adicionales */
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -69,24 +68,20 @@ body {
       top: -275px;
       left: 0;
     }
-/* Float four columns side by side */
+/* Definición de columnas y filas de la ventana */
 .column {
   float: left;
   width: 50%;
   padding: 0 10px;
 }
-
-/* Remove extra left and right margins, due to padding in columns */
 .row {margin: 0 -5px;}
-
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Style the counter cards */
+/* Estilo de las secciones o "cartas" */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
   padding: 16px;
@@ -94,7 +89,7 @@ body {
   background-color: lightblue;
 }
 
-/* Responsive columns - one column layout (vertical) on small screens */
+/* Definición de columnas responsivas, que se adaptan al ancho de ventana */
 @media screen and (max-width: 600px) {
   .column {
     width: 100%;
@@ -102,6 +97,8 @@ body {
     margin-bottom: 20px;
   }
 }
+/* Estilo de los Sliders, -webkit influye en chrome y navegadores basados en chromiun,
+-moz influye en mozilla firefox y navegadores basados en su código fuente*/
 .slidecontainer {
   width: 90%;
 }
@@ -136,16 +133,9 @@ body {
   background: blue;
   cursor: pointer;
 }
+/* Definición del tamaño del contenedor objeto 3D*/
  .model {
       width: 400px;
       height: 400px;
-/*	  background-image: url("../asets/polar.png")*/
 }
-/*.wrap {
-        perspective: 300px;
-        perspective-origin: 50% 50%;
-      }*/
-      x-model {
-        transform: rotateX(45deg) rotateY(0deg) rotateZ(225deg);
-		/*transform: rotateX(90deg) rotateY(0deg) rotateZ(180deg);*/
-      }
+
