@@ -25,61 +25,43 @@ output4.innerHTML = slider4.value;
 output5.innerHTML = slider5.value;
 output6.innerHTML = slider6.value;
 
-//datos = {"Slider1":slider1.value/*, "Slider2":slider2.value, "Slider3":slider3.value, "Slider4":slider4.value, "Slider5":slider5.value, "Slider6":slider6.value)*/};
 // Update the current slider value (each time you drag the slider handle)
-//var Slider1 = [slider1.value]
 
+//Cada vez que se mueve los sliders se debe mostrar el valor del mismo en la interfaz y además enviar
+//los valores de todos los sliders a la página que lo rececpciona y envía al programa de calibración.
 slider1.oninput = function() {
   output1.innerHTML = this.value;
- // Slider1 = this.value;
- // maxHue = {Slider1:Slider1};
-  //alert(JSON.stringify(maxHue))
- /* 
-  $.ajax({
-       url: "http://10.101.58.62:3000/John",
-       type: "POST",
-       dataType:"json",
-       data: {"Slider1":1, "Slider2":2},
-       success: function() {
-           alert("NP");
-       }
-                   
-  });*/
-  //var mmm = {"nnn":"ppp"};
-  //nnn = /*JSON.parse(*/'nel'/*)*/
+ 
   datos = {"Slider1":slider1.value, "Slider2":slider2.value, "Slider3":slider3.value, "Slider4":slider4.value, "Slider5":slider5.value, "Slider6":slider6.value};
-  $.post("http://10.100.187.13:3000/John", datos , function(){});
-  //var sendjson=$.post( "http://10.100.187.13:3000/John", { Slider1: 1 } );
-   // console.log(datos)
-//  },"json" );
+  $.post("http://10.100.187.13:3000/Prueba2", datos , function(){});
 }
 
 slider2.oninput = function() {
   output2.innerHTML = this.value;
   datos = {"Slider1":slider1.value, "Slider2":slider2.value, "Slider3":slider3.value, "Slider4":slider4.value, "Slider5":slider5.value, "Slider6":slider6.value};
-  $.post("http://10.100.187.13:3000/John", datos , function(){});
+  $.post("http://10.100.187.13:3000/Prueba2", datos , function(){});
 }
 
 slider3.oninput = function() {
   output3.innerHTML = this.value;
   datos = {"Slider1":slider1.value, "Slider2":slider2.value, "Slider3":slider3.value, "Slider4":slider4.value, "Slider5":slider5.value, "Slider6":slider6.value};
-  $.post("http://10.100.187.13:3000/John", datos , function(){});
+  $.post("http://10.100.187.13:3000/Prueba2", datos , function(){});
 }
 
 slider4.oninput = function() {
   output4.innerHTML = this.value;
   datos = {"Slider1":slider1.value, "Slider2":slider2.value, "Slider3":slider3.value, "Slider4":slider4.value, "Slider5":slider5.value, "Slider6":slider6.value};
-  $.post("http://10.100.187.13:3000/John", datos , function(){});
+  $.post("http://10.100.187.13:3000/Prueba2", datos , function(){});
 }
 
 slider5.oninput = function() {
   output5.innerHTML = this.value;
   datos = {"Slider1":slider1.value, "Slider2":slider2.value, "Slider3":slider3.value, "Slider4":slider4.value, "Slider5":slider5.value, "Slider6":slider6.value};
-  $.post("http://10.100.187.13:3000/John", datos , function(){});
+  $.post("http://10.100.187.13:3000/Prueba2", datos , function(){});
 }
 
 slider6.oninput = function() {
   output6.innerHTML = this.value;
   datos = {"Slider1":slider1.value, "Slider2":slider2.value, "Slider3":slider3.value, "Slider4":slider4.value, "Slider5":slider5.value, "Slider6":slider6.value};
-  $.post("http://10.100.187.13:3000/John", datos , function(){});
+  $.post("http://10.100.187.13:3000/Prueba2", datos , function(){});
 }
