@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 13 16:08:39 2019
-
-@author: John
-"""
-
 from flask import Flask
 
 angulo = 0
