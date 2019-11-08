@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Embedded Style Sheet</title>
+<link href="{{ url_for('static', filename='style/StyleSheet.css') }}" rel="stylesheet" type="text/css">
+<script src="resources/scripts/slider.js"></script>
+ </head>
+ <body>
+<h1><img src="{{ url_for('static', filename='asets/logo_pucp.gif') }}" alt="PUCP" style="float:left"><img src="{{ url_for('static', filename='asets/titulo.jpeg') }}" alt="titulo" style="float:center"><img src="{{ url_for('static', filename='asets/horario.jpeg') }}" alt="horario" style="float:right"></h1>
+ <br>
+ <div>
+ <div class="row">
+  <div class="column">
+  <div class="card">
+  <h2>Cámara principal:</h2>
+  <img src="http://192.168.10.10:9090/?action=stream" />
+  <div id="container">
+	<video autoplay="true" id="videoElement">
+	
+	</video>
+</div>
+
+
+<h2>Calibración</h2>
+<div class="slidecontainer">
+  <input type="range" min="1" max="255" value="50" class="slider" id="sld">
+  <span id="vlu" style="font-weight:bold;color:red"></span>
+  </div>
+
+<br>
+<br>
+<br>
+   </div>
+   <br>
+  <div class="card">
+   <h2>Parámetros de trabajo:</h2>
+  <table>
+   <tr id="trHeader">7
+     <th>Parámetro</th>
+	 <th>Unidad</th>
+     <th>Valor</th>
+    </tr>
+   <tr>
+     <td>Pos X</td>
+	 <td>m</td>
+     <td>762</td>
+	</tr>
+   <tr>
+     <td>Pos Y</td>
+     <td>m</td>
+	 <td>755</td>
+	</tr>
+   <tr>
+     <td>Pos Z</td>
+     <td>m</td>
+	 <td>714</td>
+   </tr>
+   <tr>
+     <td>Ang eje X</td>
+     <td>°</td>
+	 <td>0</td>
+   </tr>
+   <tr>
+     <td>Ang eje Y</td>
+     <td>°</td>
+	 <td>0</td>
+   </tr>
+ </table>
+ </div>
+  </div>
+  <div class="column">
+  <div class="card">
+  
+  <h2>Inclinacion del AUV</h2>
+   <img src="{{ url_for('static', filename='asets/polar.png') }}" alt="angle" class="backimage">
+      <img src="{{ url_for('static', filename='asets/auv.png') }}" alt="auv" class="frontimage">
+ </div>
+  </div>
+</div>
+ 
+ </div>
+ </body>
+ </html>

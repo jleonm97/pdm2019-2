@@ -1,0 +1,161 @@
+body {
+  background-image: url("../asets/background.jpg");
+}
+h1  {
+       text-align: center;
+       font-size: 16pt;
+       color: #0007A8;
+       margin-bottom: 5px;
+	   border: 1px solid #0007A8;
+       background-color: #FFFFFF; 
+	   padding-top: 5px;
+	   padding-bottom: 5px;
+    }
+h2  {
+       text-align: center;
+       font-size: 12pt;
+       color: #0007A8;
+    }
+  /*  div {
+		background-color: lightblue;
+	}
+*/
+	p {
+		background-color: lightblue;
+	}
+    table {
+       margin: 5px;
+       width: 500px;
+    }
+    
+    th {
+       padding: 3px;
+    }
+    
+    td {
+       padding-left: 8px;
+       padding-right: 8px;
+       border: 1px solid #000099;
+       background-color: #6060ff;
+    }
+    
+    #trHeader {
+       text-decoration: underline;
+       color: #0009cc;
+	   border: 1px solid #000099;
+       background-color: #6060ff;
+    }
+    
+    .centerCell {
+       text-align: center;
+    }
+
+	* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+    .backimage
+    {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .frontimage
+    {
+      position: relative;
+      top: -275px;
+      left: 0;
+    }
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: lightblue;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+.slidecontainer {
+  width: 90%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 10px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: blue;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: blue;
+  cursor: pointer;
+}
+ .model {
+      width: 200px;
+      height: 200px;
+   padding-bottom:200px;
+   padding-top:200px;
+
+}
+.wrap {
+	  background-image: url("../asets/auv_bg.jpg") ;
+   background-repeat: no-repeat;
+   background-position: center;
+    width: 100%;
+    height: 100%;
+/*    
+    -webkit-align-self: center;
+    align-self: center;*/
+
+/*        perspective: 300px;
+        perspective-origin: 50% 50%;*/
+      }
+/*x-model {
+  transform: rotateX(45deg) rotateY(0deg) rotateZ(225deg);
+    }*/
