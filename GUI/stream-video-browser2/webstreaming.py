@@ -2,7 +2,7 @@
 # python webstreaming.py --ip 0.0.0.0 --port 8000
 
 # import the necessary packages
-from pyimagesearch.motion_detection import SingleMotionDetector
+#from pyimagesearch.motion_detection import SingleMotionDetector
 from imutils.video import VideoStream
 from flask import Response
 from flask import Flask
@@ -15,6 +15,7 @@ import time
 import cv2
 import json
 import requests
+import puerta_clasificatoria as pc
 
 # initialize the output frame and a lock used to ensure thread-safe
 # exchanges of the output frames (useful for multiple browsers/tabs
@@ -31,8 +32,13 @@ app = Flask(__name__)
 vs = VideoStream(src=0).start()
 time.sleep(2.0)
 
-url = 'http://10.100.186.188:3000/Prueba3'
-url2 = 'http://10.100.186.188:3000/John'
+#url = 'http://192.168.10.28:3000/Prueba3'
+#url2 = 'http://192.168.10.28:3000/John'
+#url3 = 'http://192.168.10.28:3000/AltoenGA'
+
+url = 'http://10.100.185.187:3000/Prueba3'
+url2 = 'http://10.100.185.187:3000/John'
+url3 = 'http://10.100.185.187:3000/AltoenGA'
 
 #DefVal = {'Slider1':mxh,
 #          'Slider2':mnh,
@@ -46,7 +52,7 @@ url2 = 'http://10.100.186.188:3000/John'
 @app.route("/")
 def index():
 
-	global url
+	global url, mnh, mxh, mn
   
 	# return the rendered template
 	with open('initialValues.json') as json_file:
@@ -74,7 +80,7 @@ def detect_motion(frameCount):
 
 	# initialize the motion detector and the total number of frames
 	# read thus far
-	md = SingleMotionDetector(accumWeight=0.1)
+	#md = SingleMotionDetector(accumWeight=0.1)
 	total = 0
 
 	# loop over frames from the video stream
@@ -91,44 +97,19 @@ def detect_motion(frameCount):
 		mxs = int(var3['Slider3'])
 		mnv = int(var3['Slider6'])
 		mxv = int(var3['Slider5'])
-		# read the next frame from the video stream, resize it,
-		# convert the frame to grayscale, and blur it
+		
 		frame = vs.read()
 		frame = imutils.resize(frame, width=400)
-#		gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-#		gray = cv2.GaussianBlur(gray, (7, 7), 0)
+		frame = imutils.resize(frame, width=min(200, frame.shape[1]))
 
-		# grab the current timestamp and draw it on the frame
-		#timestamp = datetime.datetime.now()
-		#cv2.putText(frame, timestamp.strftime(
-		#	"%A %d %B %Y %I:%M:%S%p"), (10, frame.shape[0] - 10),
-		#	cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
-
-		# if the total number of frames has reached a sufficient
-		# number to construct a reasonable background model, then
-		# continue to process the frame
-		#if total > frameCount:
-			# detect motion in the image
-			#ingresar variables del scrollbar
-		motion = md.detect2(frame, mnh, mxh, mns, mxs, mnv, mxv, 25)
-      #detect2(self, image, tVal=25, mnh, mxh, mns, mxs, mnv, mxv):
-			# cehck to see if motion was found in the frame
-		if motion is not None:
-				# unpack the tuple and draw the box surrounding the
-				# "motion area" on the output frame
-			(thresh, (minX, minY, maxX, maxY)) = motion
-			cv2.rectangle(thresh, (minX, minY), (maxX, maxY),(0, 0, 255), 2)
-		
-		# update the background model and increment the total number
-		# of frames read thus far
-		#md.update(gray)
+		(Xc, Yc, Area, im) = pc.coorBoundingBoxes(frame,2,mnh, mxh, mns, mxs, mnv, mxv)
+		salida = {"X":Xc, "Y":Yc, "Area":Area}
+     
 		total += 1
 
-		# acquire the lock, set the output frame, and release the
-		# lock
 		with lock:
-			#outputFrame = frame.copy()
-			outputFrame = thresh.copy()
+			#outputFrame = frame.copy()<
+			outputFrame = im.copy()
 		
 def generate():
 	# grab global references to the output frame and lock variables
